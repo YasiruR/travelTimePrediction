@@ -72,9 +72,7 @@ class Day:
         #print("Final travel time list:", finalTravelTimeList)
         return finalLinkList, finalSpeedList, finalTravelTimeList, finalTripIdList;
     
-#classDay = Day()
-#Day.getSpeedArray(10, 18, [4616266, 4362342, 4362244])
-            
+
             
             
     

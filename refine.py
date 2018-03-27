@@ -23,8 +23,3 @@ class BoxPlotTechnique:
                 refinedDayArray.append(dayArray[i])
         return refinedDayArray, refinedDeltaArray, refinedTravelTimeArray;
                                 
-#a = [1, 2, 4, 5, 7, 9, 13]
-#b = [0.0456, 15.879, 10.267, 25.3198, 12.587, 8.567, 11.56]
-
-#c = refineDeltaArray(a, b)
-#print ('selected : ', c)
