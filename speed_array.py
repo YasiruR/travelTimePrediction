@@ -1,18 +1,17 @@
 #i/usr/bin/python
-import pandas as pd
 
 class Day:
 
-    def getSpeedArray(date, time, linkArray):
+    def getSpeedArray(date, time, linkArray, dataFile):
         
         #dataFile = open('september2016.csv', "r")
         #reader = csv.reader(dataFile)
-        dFile = pd.read_csv('september2016.csv')
-        tripIdList = dFile.Id
-        travelTimeList = dFile.TravelTime
-        linkList = dFile.linkId
-        dateList = dFile.DataAsOf
-        speedList = dFile.Speed
+        
+        tripIdList = dataFile.Id
+        travelTimeList = dataFile.TravelTime
+        linkList = dataFile.linkId
+        dateList = dataFile.DataAsOf
+        speedList = dataFile.Speed
         
         selectedIndexList = []
         selectedSpeedList = []
