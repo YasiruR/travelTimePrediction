@@ -66,9 +66,9 @@ class Day:
                 #print(link, linkEle)
                 index += 1
         
-        #print("Final link list:", finalLinkList)
-        #print("Final speed list", finalSpeedList)
-        #print("Final travel time list:", finalTravelTimeList)
+        print("Link list for day", str(date), " : ", finalLinkList)
+        print("Speed list for day", str(date), " : ", finalSpeedList)
+        print("Travel time list for day", str(date), " : ", finalTravelTimeList)
         return finalLinkList, finalSpeedList, finalTravelTimeList, finalTripIdList;
     
 
