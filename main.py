@@ -57,12 +57,18 @@ timeRequested1 = '11'
 #actualTime2 = (180+62+140+149+84+49) / 60
 #timeRequested2 = '03'
 
+#currentSpeedList3 = [59.03, 45.98, 3.73, 34.8]
+#linkArray3 = [4616250, 4456498, 4362342, 4616365]
+#actualTime3 = (69+54+57+437) / 60
+#timeRequested3 = '02'
+
 lengthArray = []
 
 for i in range(len(linkArray1)):
     lengthArray.append(10)
     
 averageTime = Main.getDeltaArray(linkArray1, lengthArray, timeRequested1, currentSpeedList1)
-print("\nActual time : ", actualTime2, "min")
+
+print("\nActual time : ", actualTime1, "min")
 percentDeviation = ((abs((averageTime/60) - actualTime1)) / actualTime1) * 100
-print("\nEstimation percentage error : ", percentDeviation, "%")
+print("\nDeviation error percentage : ", percentDeviation, "%")

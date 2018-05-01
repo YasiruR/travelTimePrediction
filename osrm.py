@@ -1,7 +1,8 @@
 import requests
 import json
 
-coArray = [[40.74047,-74.009251], [40.74137,-74.00893], [40.7431706,-74.008591]]
+#coArray = [[40.74047,-74.009251], [40.74137,-74.00893], [40.7431706,-74.008591]]
+coArray = [[13.388860,52.517037], [13.397634,52.529407], [13.428555,52.523219]]
 
 #for ele in coArray:
 #    strEle = str(ele)
@@ -23,7 +24,7 @@ def mapArrayIntoUrl(coArray):
             coordinatesString += strEle
         if(ele != coArray[(len(coArray)-1)]):
             coordinatesString += ";"
-    print(coordinatesString)
+    print(coordinatesString + '\n')
     return coordinatesString;
 
 def getDistanceOSRM(coArray): 
@@ -33,7 +34,10 @@ def getDistanceOSRM(coArray):
     print(url)
     
     response = requests.get(url)
-    print("\nDistance : ", response.text)
+    txt = response.json()
+    print("\nDistance : ", txt)
     return;
     
 getDistanceOSRM(coArray)
+
+
