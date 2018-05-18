@@ -4,14 +4,6 @@ import json
 #coArray = [[40.74047,-74.009251], [40.74137,-74.00893], [40.7431706,-74.008591]]
 coArray = [[13.388860,52.517037], [13.397634,52.529407], [13.428555,52.523219]]
 
-#for ele in coArray:
-#    strEle = str(ele)
-#    strEle.replace(" ", "")
-#    coEle = strEle[1:-1]
-#    print(coEle, "\n")
-#    coordinatesString += str(coEle) + ';'
-#print(coordinatesString)
-
 def mapArrayIntoUrl(coArray):
     
     coordinatesString = ""
