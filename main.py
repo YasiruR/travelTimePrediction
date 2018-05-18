@@ -19,31 +19,32 @@ class Main:
         dataFile = pd.read_csv('august2016.csv')
         
         for day in range(1, 32): #August only
-            print("\n Day ", str(day), " : ")
+            #print("\n Day ", str(day), " : ")
             linkList, speedList, travelTimeList, tripIdList = Day.getSpeedArray(day, timeRequested, linkArray, dataFile)
-            print("Trip ID list : ", tripIdList)
+            #print("Trip ID list : ", tripIdList)
             #print("Link list : ", linkList)
             #print("Speed list : ", speedList)
             #print("Travel Time list : ", travelTimeList)
             deltaValue = Delta.deltaFunction(linkList, lengthList, speedList, currentSpeedList, totalLength) 
-            print("Delta Value : ", deltaValue)
+            #print("Delta Value : ", deltaValue)
             if(len(linkArray) == len(linkList)):
                 dayList.append(day)
                 updatedTravelTimeList.append(travelTimeList)
                 deltaValueList.append(deltaValue)
-                timeLoss = str(abs(actualTime1 - sum(travelTimeList)) / 60)
-                sys.stdout.write('\rTime deviation : ' + timeLoss + '\n')
+                timeLoss = str(abs(actualTime - sum(travelTimeList)) / 60)
+                #sys.stdout.write('\rTime deviation : ' + timeLoss + '\n')
             else:
-                print("NOT ADDED TO THE LIST")
+                #print("NOT ADDED TO THE LIST")
                 pass
+
         refinedDayList, refinedDeltaValueList, refinedTravelTimeList = BoxPlotTechnique.refineDeltaArray(dayList, deltaValueList, updatedTravelTimeList)
-        print("\nRefined Day List : ", refinedDayList)
-        print("\nRefined Travel Time List : ", refinedTravelTimeList)
-        print("\nRefined Delta Value List : ", refinedDeltaValueList)
+        #print("\nRefined Day List : ", refinedDayList)
+        #print("\nRefined Travel Time List : ", refinedTravelTimeList)
+        #print("\nRefined Delta Value List : ", refinedDeltaValueList)
         averageTime = AverageTime.calculateAverageTime(refinedDayList, refinedTravelTimeList)
-        print("\n \n")
-        print("Calculated average time to travel : ", (averageTime/60), "min")
-        
+        #print("\n \n")
+#        print("Calculated average time to travel : ", (averageTime/60), "min")
+            
         return averageTime;
 
 #linkArray = [4616266, 4362342, 4362244]
@@ -64,7 +65,6 @@ class Main:
 #actualTime3 = (69+54+57+437) / 60
 #timeRequested3 = '02'
 
-lengthArray = []
 
 #for i in range(len(linkArray1)):
 #    lengthArray.append(10)    
@@ -78,3 +78,38 @@ lengthArray = []
 
 testDataFile = pd.read_csv('september2016.csv')
 testLinkArray, testSpeedArray, testTimeRequestedArray, testActualTimeArray = Graph.getTripsForTesting(testDataFile)
+finalCalculatedTimeList = []
+finalActualTimeList = []
+finalErrorList = []
+
+counter = 0
+for trip in testLinkArray:
+    lengthArray = []
+    linkArray = testLinkArray[counter]
+    currentSpeedArray = testSpeedArray[counter]
+    timeRequested = testTimeRequestedArray[counter]
+    actualTime = testActualTimeArray[counter]
+    
+    #creating length array of equal values
+    for i in range(len(linkArray)):
+        lengthArray.append(10)
+        
+    averageTime = Main.getDeltaArray(linkArray, lengthArray, timeRequested, currentSpeedArray)
+    
+    if(averageTime == 0):
+        print("Calculation error : delta value")
+    else:
+        percentDeviation = ((abs((averageTime/60) - actualTime)) / actualTime) * 100
+        print("Calculated average time to travel : ", (averageTime/60), "min")
+        print("\nActual time for trip ", str(counter+1), " : ", actualTime, "min")
+        print("\nDeviation error percentage : ", percentDeviation, "%")
+        print("\n")
+        
+        finalActualTimeList.append(actualTime)
+        finalCalculatedTimeList.append(averageTime/60)
+        finalErrorList.append(percentDeviation)
+    counter += 1
+    
+print("Actual Time List = ", finalActualTimeList)
+print("Calculated Time List = ", finalCalculatedTimeList)
+print("Error List = ", finalErrorList)

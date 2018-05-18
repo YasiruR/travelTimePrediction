@@ -24,7 +24,7 @@ class Graph:
                 tripSpeedList = []
                 tripTravelTime = []
             
-                while( len(tripLinkList) < 20 ):
+                while( len(tripLinkList) < 10 ):
                     if(len(str(day)) == 1):
                         if(testDate[2] == str(day)):
                             tripRequestedTime = str(testDate[9]) + str(testDate[10])
@@ -42,20 +42,22 @@ class Graph:
 #                print("Trip set ", str(counter), " : ", tripLinkList)
 #                print("Speed set : ", tripSpeedList)
 #                print("\n")
-                
-                actualTime = (sum(tripTravelTime))/60
+                try:
+                    actualTime = (sum(tripTravelTime))/60
+                except TypeError:
+                    break
                 
                 testLinkSet.append(tripLinkList)
                 testSpeedList.append(tripSpeedList)
                 testActualTimeSet.append(actualTime)
                 testRequestedTimeSet.append(tripRequestedTime)
-                if(len(testLinkSet) == 10):
+                if(len(testLinkSet) == 100):
                     break                
             testDate = dateList[index]
-            print("Link List : ", testLinkSet)
-            print("Speed List : ", testSpeedList)
+#            print("Link List : ", testLinkSet)
+#            print("Speed List : ", testSpeedList)
             print("Actual Time List : ", testActualTimeSet)
-            print("Requested Time List : ", testRequestedTimeSet)
+#            print("Requested Time List : ", testRequestedTimeSet)
         return testLinkSet, testSpeedList, testRequestedTimeSet, testActualTimeSet;
             
 

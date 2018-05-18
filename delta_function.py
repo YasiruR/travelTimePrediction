@@ -11,8 +11,15 @@ class Delta:
             s = float(speedArray[i])
             cs = float(currentSpeedArray[i])
     
-            delta = (l / totalLength) * ((1/cs - 1/s) ** 2)
+            try:
+                delta = (l / totalLength) * ((1/cs - 1/s) ** 2)
+            except ZeroDivisionError:
+                #print("cs : ", str(cs))
+                #print("s : ", str(s))
+                print("error!")
+                return 0
             totalDelta += delta
+        #print("Total delta : ", totalDelta)
         return totalDelta;
     
 
