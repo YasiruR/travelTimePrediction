@@ -16,7 +16,7 @@ class Main:
         updatedTravelTimeList = []
         totalLength = sum(lengthList)
         #dataFile = pd.read_csv('september2016.csv')
-        dataFile = pd.read_csv('august2016.csv')
+        dataFile = pd.read_csv('june2016.csv')
         
         for day in range(1, 32): #August only
             #print("\n Day ", str(day), " : ")
@@ -31,7 +31,7 @@ class Main:
                 dayList.append(day)
                 updatedTravelTimeList.append(travelTimeList)
                 deltaValueList.append(deltaValue)
-                timeLoss = str(abs(actualTime - sum(travelTimeList)) / 60)
+                #timeLoss = str(abs(actualTime - sum(travelTimeList)) / 60)
                 #sys.stdout.write('\rTime deviation : ' + timeLoss + '\n')
             else:
                 #print("NOT ADDED TO THE LIST")
@@ -54,29 +54,33 @@ class Main:
 #linkArray1 = [4616213, 4616214, 4616215, 4616212, 4616198, 4616202]
 #actualTime1 = (125+82+133+49+100+79)/60
 #timeRequested1 = '11'
-
+#lengthArray = []
+#
 #currentSpeedList2 = [41.01, 39.15, 49.09, 45.98, 47.22, 44.12]
 #linkArray2 = [4456481, 4456452, 4456505, 4456506, 4763656, 4616218]
 #actualTime2 = (180+62+140+149+84+49) / 60
 #timeRequested2 = '03'
-
+#
 #currentSpeedList3 = [59.03, 45.98, 3.73, 34.8]
 #linkArray3 = [4616250, 4456498, 4362342, 4616365]
 #actualTime3 = (69+54+57+437) / 60
 #timeRequested3 = '02'
-
-
-#for i in range(len(linkArray1)):
+#
+#for i in range(len(linkArray3)):
 #    lengthArray.append(10)    
-    
-#averageTime = Main.getDeltaArray(linkArray1, lengthArray, timeRequested1, currentSpeedList1)
-
-#print("\nActual time : ", actualTime1, "min")
-#percentDeviation = ((abs((averageTime/60) - actualTime1)) / actualTime1) * 100
+#    
+#averageTime = Main.getDeltaArray(linkArray3, lengthArray, timeRequested3, currentSpeedList3)
+#
+#print("AFTER")
+#print("\nActual time : ", actualTime3, "min")
+#print("\nAverage time : ", averageTime/60, "min")
+#percentDeviation = ((abs((averageTime/60) - actualTime3)) / actualTime3) * 100
 #print("\nDeviation error percentage : ", percentDeviation, "%")
 
 
-testDataFile = pd.read_csv('september2016.csv')
+### below includes generating test data as well ###
+
+testDataFile = pd.read_csv('july2016.csv')
 testLinkArray, testSpeedArray, testTimeRequestedArray, testActualTimeArray = Graph.getTripsForTesting(testDataFile)
 finalCalculatedTimeList = []
 finalActualTimeList = []

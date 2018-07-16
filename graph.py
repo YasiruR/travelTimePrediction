@@ -51,7 +51,7 @@ class Graph:
                 testSpeedList.append(tripSpeedList)
                 testActualTimeSet.append(actualTime)
                 testRequestedTimeSet.append(tripRequestedTime)
-                if(len(testLinkSet) == 100):
+                if(len(testLinkSet) == 1000):
                     break                
             testDate = dateList[index]
 #            print("Link List : ", testLinkSet)

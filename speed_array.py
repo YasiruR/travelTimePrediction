@@ -49,28 +49,68 @@ class Day:
                 index += 1
                 
         
+        
         for link in linkArray:
             #print("selecting ", link, " link")
             index = 0
+            flag = True
+            totalTime = 0
+            totalSpeed = 0
+            count = 0
             for linkEle in selectedLinkList:
                 #print("checking with link ", linkEle)
-                if(link == linkEle):
+                
+#                if(link == linkEle):
+#                    finalIndexList.append(selectedIndexList[index])
+#                    finalSpeedList.append(selectedSpeedList[index])
+#                    finalLinkList.append(linkEle)
+#                    finalTravelTimeList.append(selectedTravelTimeList[index])
+#                    finalTripIdList.append(selectedTripIdList[index])
+#                    #print("Trip ID: ", selectedTripIdList[index])
+#                    #print("Speed: ", selectedSpeedList[index])
+#                    break
+                
+                #print('Link ', linkEle, 'searching for link', link)
+                
+                if((link == linkEle) & flag):
+                    #getAverageTimeFromLinks(linkEle, selectedTravelTimeList[index], totalTime)
                     finalIndexList.append(selectedIndexList[index])
-                    finalSpeedList.append(selectedSpeedList[index])
+                    #finalSpeedList.append(selectedSpeedList[index])
                     finalLinkList.append(linkEle)
-                    finalTravelTimeList.append(selectedTravelTimeList[index])
+                    #finalTravelTimeList.append(selectedTravelTimeList[index])
                     finalTripIdList.append(selectedTripIdList[index])
+                    #fTravelTime = selectedTravelTimeList[index]
+                    
+                    #print('First Travel Time : ', fTravelTime/60)
                     #print("Trip ID: ", selectedTripIdList[index])
                     #print("Speed: ", selectedSpeedList[index])
-                    break
+                    totalTime += selectedTravelTimeList[index]
+                    totalSpeed += selectedSpeedList[index]
+                    count += 1
+                    flag = False
+                elif(link == linkEle):
+                    totalTime += selectedTravelTimeList[index]
+                    totalSpeed += selectedSpeedList[index]
+                    count += 1
                 #print(link, linkEle)
                 index += 1
-        
+            
+            if(count != 0):
+                averageTime = totalTime / count
+                averageSpeed = totalSpeed / count
+                #print('Average Travel Time from links : ', averageTime/60)
+                finalSpeedList.append(averageSpeed)
+                finalTravelTimeList.append(averageTime)
+                
 #        print("Link list for day", str(date), " : ", finalLinkList)
 #        print("Speed list for day", str(date), " : ", finalSpeedList)
 #        print("Travel time list for day", str(date), " : ", finalTravelTimeList)
+    
+        
         return finalLinkList, finalSpeedList, finalTravelTimeList, finalTripIdList;
     
+    
+        
 
             
             
